@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:provider_demo/controller/pro_demo2.dart';
 import 'package:provider_demo/views/page1.dart';
+import 'package:provider_demo/views/song_screen.dart';
 
 
 class Page3 extends StatelessWidget {
@@ -26,7 +27,10 @@ class Page3 extends StatelessWidget {
               }),
             IconButton(onPressed: (){
               Provider.of<ProDemo2>(context,listen: false).demoVal("Flutter...");
-            }, icon: Icon(Icons.refresh))
+            }, icon: const Icon(Icons.refresh)),
+            ElevatedButton(onPressed: (){
+              Navigator.of(context).push(MaterialPageRoute(builder: (_)=>const SongScreen()));
+            }, child: const Text("PlayList"))
           ],
         ),
       ),

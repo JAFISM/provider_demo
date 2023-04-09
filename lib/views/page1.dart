@@ -51,10 +51,22 @@ class Page1 extends StatelessWidget {
                 ),
                 child: Center(child: Consumer<ProviderDemo>(
                   builder: (context, value, child) {
-                    return Text(Provider.of<ProviderDemo>(context).count.toString());
+                    return Text(Provider.of<ProviderDemo>(context).count.toString(),);
                   })),
               ),
             ),
+            height,
+            ElevatedButton(onPressed: (){
+              Provider.of<ProviderDemo>(context, listen: false).reset();
+            }, child: const Text("Clear button"),),
+            height,
+            ElevatedButton(onPressed: (){
+              Provider.of<ProviderDemo>(context, listen: false).decrement();
+            }, child: const Text("Decrement button"),),
+            height,
+            ElevatedButton(onPressed: (){
+              Provider.of<ProviderDemo>(context, listen: false).increment();
+            }, child: const Text("Increment button"),),
           ],
         ),
       ),
