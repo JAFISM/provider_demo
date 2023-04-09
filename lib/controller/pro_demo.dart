@@ -15,7 +15,12 @@ class ProviderDemo extends ChangeNotifier{
      notifyListeners();
    }
    void decrement() {
-     _count--;
+     if(_count!=0) {
+       _count--;
+     }
+     else{
+       return ;
+     }
      notifyListeners();
    }
 

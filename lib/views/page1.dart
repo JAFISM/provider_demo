@@ -9,9 +9,13 @@ class Page1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var height=const SizedBox(height: 10,);
+    Widget height=const SizedBox(height: 10,);
     print("Page rebuild");
     return Scaffold(
+      appBar: AppBar(
+        title: const Text("Provider Example"),
+        backgroundColor: Colors.indigo,
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -44,15 +48,22 @@ class Page1 extends StatelessWidget {
                 Provider.of<ProviderDemo>(context,listen: false).increment();
               },
               child: Container(
-                height: 50,
-                width: 50,
-                decoration: BoxDecoration(
-                  color: Colors.amberAccent
+                height: 100,
+                width: 100,
+                decoration:  BoxDecoration(
+                  color: Colors.amberAccent,
+                  borderRadius: BorderRadius.circular(10)
                 ),
-                child: Center(child: Consumer<ProviderDemo>(
-                  builder: (context, value, child) {
-                    return Text(Provider.of<ProviderDemo>(context).count.toString(),);
-                  })),
+                child: Center(child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    const Text("Tap Here",style: TextStyle(color: Colors.white),),
+                    Consumer<ProviderDemo>(
+                      builder: (context, value, child) {
+                        return Text(Provider.of<ProviderDemo>(context).count.toString(),style: const TextStyle(fontSize: 30),);
+                      }),
+                  ],
+                )),
               ),
             ),
             height,
